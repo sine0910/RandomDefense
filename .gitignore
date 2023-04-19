@@ -361,3 +361,16 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Assets/2D Casual UI/Sprite
+/Assets/Cainos/Pixel Art Top Down - Basic
+/Assets/Font/BMJUA_ttf.ttf
+/Assets/Font
+/Assets/RD/Prefabs
+/Assets/RD/Resource/Sprites
+/Assets/RD/Scenes
+/Assets/RD/Tile
+/ImageResource
+/Library
+/ProjectSettings
+/Temp
+/UserSettings
