@@ -11,6 +11,9 @@ public class PrefabManager : MonoBehaviour
     public GameObject[] towerPrefabs;
     public List<GameObject>[] towerPool;
 
+    public GameObject cardPrefabs;
+    public List<GameObject> cardPool;
+
     private void Awake()
     {
         InitPools();
@@ -20,6 +23,7 @@ public class PrefabManager : MonoBehaviour
     {
         enemyPool = new List<GameObject>[enemyPrefabs.Length];
         towerPool = new List<GameObject>[towerPrefabs.Length];
+        cardPool = new List<GameObject>();
 
         for (int i = 0; i < enemyPool.Length; i++)
         {
@@ -75,6 +79,30 @@ public class PrefabManager : MonoBehaviour
         {
             select = Instantiate(towerPrefabs[t], transform);
             towerPool[t].Add(select);
+        }
+
+        return select;
+    }
+
+    public GameObject GetCard(Transform t)
+    {
+        GameObject select = null;
+
+        foreach (GameObject item in cardPool)
+        {
+            if (!item.activeSelf)
+            {
+                select = item;
+                select.SetActive(true);
+
+                break;
+            }
+        }
+
+        if (!select)
+        {
+            select = Instantiate(cardPrefabs, t);
+            cardPool.Add(select);
         }
 
         return select;

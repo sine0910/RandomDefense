@@ -59,16 +59,21 @@
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\TopDownCharacterController.cs" />
     <Compile Include="Assets\RD\Scripts\Enemy.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\PropsAltar.cs" />
+    <Compile Include="Assets\RD\Scripts\SlimeTower.cs" />
+    <Compile Include="Assets\RD\Scripts\UIManager.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\LayerTrigger.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\CameraFollow.cs" />
-    <Compile Include="Assets\RD\Scripts\PrefabManager.cs" />
-    <Compile Include="Assets\RD\Scripts\EnemyMovement.cs" />
-    <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\SpriteColorAnimation.cs" />
-    <Compile Include="Assets\RD\Scripts\GameManager.cs" />
-    <Compile Include="Assets\RD\Scripts\TowerSpawner.cs" />
-    <Compile Include="Assets\RD\Scripts\EnemySpawner.cs" />
+    <Compile Include="Assets\RD\Scripts\EnemyData.cs" />
     <Compile Include="Assets\RD\Scripts\TowerCard.cs" />
-    <Compile Include="Assets\RD\Scripts\UIManager.cs" />
+    <Compile Include="Assets\RD\Scripts\PrefabManager.cs" />
+    <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\SpriteColorAnimation.cs" />
+    <Compile Include="Assets\RD\Scripts\SpawnPoint.cs" />
+    <Compile Include="Assets\RD\Scripts\GameManager.cs" />
+    <Compile Include="Assets\RD\Scripts\EnemySpawner.cs" />
+    <Compile Include="Assets\RD\Scripts\Scanner.cs" />
+    <Compile Include="Assets\RD\Scripts\DataManager.cs" />
+    <Compile Include="Assets\RD\Scripts\TowerData.cs" />
+    <Compile Include="Assets\RD\Scripts\CameraManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Cainos\Pixel Art Top Down - Basic\Changelog.txt" />

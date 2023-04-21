@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    private EnemySpawner enemySpawner;
+
     public SpriteRenderer spriter;
 
     private int wayPointCount;
     private Transform[] wayPoints;
     private int currentIndex = 0;
 
+    private SortingLayer layer;
+
     public float moveSpeed;
-    public Vector3 moveDir = Vector3.zero; 
+    public Vector3 moveDir = Vector3.zero;
+
+    public float disToGoal;
+
+    [SerializeField]
+    private float healthPoint;
+    private int attackPoint;
 
     bool dead = false;
 
@@ -20,8 +30,14 @@ public class Enemy : MonoBehaviour
         spriter = GetComponent<SpriteRenderer>();
     }
 
-    public void Setup(Transform[] w)
+    public void Setup(EnemySpawner e, EnemyData d, Transform[] w)
     {
+        enemySpawner = e;
+
+        healthPoint = d.health;
+        attackPoint = d.attack;
+        moveSpeed = d.speed;
+
         wayPointCount = w.Length;
         wayPoints = new Transform[wayPointCount];
         wayPoints = w;
@@ -38,6 +54,8 @@ public class Enemy : MonoBehaviour
         while (!dead)
         {
             transform.Translate(moveDir * moveSpeed * Time.fixedDeltaTime);
+
+            disToGoal = Vector3.Distance(transform.position, wayPoints[wayPointCount - 1].position);
 
             if (Vector3.Distance(transform.position, wayPoints[currentIndex].position) <= 0.1f)
             {
@@ -68,13 +86,27 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            GameManager.instance.DiscountHeart(attackPoint);
             Death();
         }
     }
 
-    private void Death()
+    public void Hit(float d)
+    {
+        Debug.Log("Enemy Hit: " + d);
+
+        healthPoint -= d;
+
+        if (healthPoint < 0)
+        {
+            Death();
+        }
+    }
+
+    public void Death()
     {
         dead = true;
         gameObject.SetActive(false);
+        enemySpawner.DestroyEnemy(this);
     }
 }

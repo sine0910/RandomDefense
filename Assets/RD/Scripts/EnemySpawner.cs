@@ -6,26 +6,38 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
     private float spawnTime;
-    public List<WayPoints> wayPointsList = new List<WayPoints>();
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private List<WayPoints> wayPointsList;
+    private List<Enemy> enemyList;
+
+    public List<Enemy> EnemyList => enemyList;
+
+    void Awake()
     {
+        enemyList = new List<Enemy>();
+
         StartCoroutine(SpawnEnemy());
     }
 
-    // Update is called once per frame
     IEnumerator SpawnEnemy()
     {
         while (true)
         {
             GameObject clone = GameManager.instance.prefabs.GetEnemy(0);
             Enemy enemy = clone.GetComponent<Enemy>();
+            EnemyData data = GameManager.instance.data.GetEnemyData(0);
 
-            enemy.Setup(wayPointsList[0].wayPoints);
+            enemy.Setup(this, data, wayPointsList[0].wayPoints);
+            enemyList.Add(enemy);
 
             yield return new WaitForSeconds(spawnTime);
         }
+    }
+
+    public void DestroyEnemy(Enemy e)
+    {
+        enemyList.Remove(e);
     }
 }
 
